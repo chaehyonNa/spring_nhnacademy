@@ -15,24 +15,4 @@
 
     <bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor" />
 
-    <bean id="smsMessageSender" class="com.nhnacademy.edu.springframework.sender.SmsMessageSender">
-        <qualifier type="com.nhnacademy.edu.springframework.annotation.MessageSenderQualifier">
-            <attribute key="how" value="SMS"/>
-            <attribute key="dummy" value="false"/>
-        </qualifier>
-    </bean>
-
-    <bean id="emailMessageSender" class="com.nhnacademy.edu.springframework.sender.EmailMessageSender"
-    primary="true" >
-        <qualifier type="com.nhnacademy.edu.springframework.annotation.MessageSenderQualifier">
-            <attribute key="how" value="EMAIL"/>
-            <attribute key="dummy" value="false"/>
-        </qualifier>
-    </bean>
-
-    <bean id="messageSendService" class="com.nhnacademy.edu.springframework.service.MessageSendService">
-<!--        autowire="byType">-->
-<!--        <constructor-arg ref="smsMessageSender" />-->
-<!--        <property name="messageSender" ref="smsMessageSender" />-->
-    </bean>
 </beans>
