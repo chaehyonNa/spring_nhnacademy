@@ -12,11 +12,8 @@ public class Main {
         User user = new User("user@naver.com", "010-1234-1234");
         String message = "안녕";
         try(ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml")){
-            MessageSender smsMessageSender = context.getBean("smsMessageSender",MessageSender.class);
-            MessageSender emailMessageSender = context.getBean("emailMessageSender",MessageSender.class);
-
-            smsMessageSender.sendMessage(user, message);
-            emailMessageSender.sendMessage(user, message);
+            MessageSendService service = context.getBean("messageSendService", MessageSendService.class);
+            service.doSendMessage(user, message);
         }
     }
 }

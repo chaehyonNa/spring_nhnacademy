@@ -13,4 +13,11 @@ public class MessageSendService {
     public void doSendMessage(User user, String message){
         messageSender.sendMessage(user, message);
     }
+
+    public void setSmsMessageSender(MessageSender messageSender) {
+        this.messageSender = messageSender;
+    }
+    public MessageSendService() {
+
+    }
 }
