@@ -7,25 +7,22 @@ import com.nhnacademy.edu.springframework.sender.MessageSender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Required;
+import org.springframework.beans.factory.annotation.Value;
 
 public class MessageSendService {
     private MessageSender messageSender;
 
-//    @Autowired
-//    public MessageSendService(@Qualifier("smsMessageSender") MessageSender messageSender) {
-//        this.messageSender = messageSender;
-//    }
+    @Value("${from}")
+    private String from;
 
     @Autowired
-    public MessageSendService(@MessageSenderQualifier(how = How.SMS,dummy = false) MessageSender messageSender){
+    public MessageSendService(@Qualifier("smsMessageSender") MessageSender messageSender) {
         this.messageSender = messageSender;
     }
 
     public void doSendMessage(User user, String message){
+        System.out.println("From " + from);
         messageSender.sendMessage(user, message);
     }
 
-    public void setSmsMessageSender(MessageSender messageSender) {
-        this.messageSender = messageSender;
-    }
 }
