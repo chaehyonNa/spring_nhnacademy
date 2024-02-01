@@ -9,11 +9,14 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
 
+<!--    annotation설정을 위한 선언-->
     <context:annotation-config />
 
-    <context:property-placeholder location="classpath:MessageSende.properties" />
 
-    <bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor" />
+    <context:component-scan base-package="com.nhnacademy.edu.springframework" />
+
+    <!--    @Value(${...})를 쓰기위한 선언-->
+    <context:property-placeholder location="classpath:MessageSende.properties" />
 
     <bean id="doorayMessageSender" class="com.nhnacademy.edu.springframework.sender.DoorayMessageSender">
         <qualifier type="com.nhnacademy.edu.springframework.annotation.MessageSenderQualifier">
@@ -22,8 +25,5 @@
     </bean>
 
     <bean id="messageSendService" class="com.nhnacademy.edu.springframework.service.MessageSendService">
-        <!--        autowire="byType">-->
-        <!--        <constructor-arg ref="smsMessageSender" />-->
-        <!--        <property name="messageSender" ref="smsMessageSender" />-->
     </bean>
 </beans>

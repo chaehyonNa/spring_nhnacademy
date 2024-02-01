@@ -2,7 +2,6 @@ package com.nhnacademy.edu.springframework.sender;
 
 import com.nhn.dooray.client.DoorayHook;
 import com.nhn.dooray.client.DoorayHookSender;
-import com.nhnacademy.edu.springframework.domain.User;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.client.RestTemplate;
 
@@ -16,7 +15,7 @@ public class DoorayMessageSender implements MessageSender{
     @Value("${text}")
     private String text;
     @Override
-    public boolean sendMessage(User user, String message) {
+    public boolean sendMessage() {
         new DoorayHookSender(new RestTemplate(), hookUrl)
                 .send(DoorayHook.builder()
                         .botName(name)
