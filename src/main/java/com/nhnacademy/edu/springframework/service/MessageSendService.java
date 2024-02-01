@@ -12,16 +12,12 @@ import org.springframework.beans.factory.annotation.Value;
 public class MessageSendService {
     private MessageSender messageSender;
 
-    @Value("${from}")
-    private String from;
-
     @Autowired
     public MessageSendService(@Qualifier("smsMessageSender") MessageSender messageSender) {
         this.messageSender = messageSender;
     }
 
     public void doSendMessage(User user, String message){
-        System.out.println("From " + from);
         messageSender.sendMessage(user, message);
     }
 
