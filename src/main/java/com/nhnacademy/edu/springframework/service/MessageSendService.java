@@ -13,7 +13,7 @@ public class MessageSendService {
     private MessageSender messageSender;
 
     @Autowired
-    public MessageSendService(@Qualifier("smsMessageSender") MessageSender messageSender) {
+    public MessageSendService(@Qualifier("doorayMessageSender") MessageSender messageSender) {
         this.messageSender = messageSender;
     }
 

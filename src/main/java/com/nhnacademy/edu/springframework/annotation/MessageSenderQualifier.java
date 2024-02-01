@@ -12,5 +12,4 @@ import java.lang.annotation.Target;
 @Qualifier
 public @interface MessageSenderQualifier {
     How how();
-    boolean dummy();
 }
