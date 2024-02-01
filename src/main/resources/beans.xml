@@ -30,6 +30,13 @@
         </qualifier>
     </bean>
 
+    <bean id="doorayMessageSender" class="com.nhnacademy.edu.springframework.sender.DoorayMessageSender">
+        <qualifier type="com.nhnacademy.edu.springframework.annotation.MessageSenderQualifier">
+            <attribute key="how" value="DOORAY"/>
+            <attribute key="dummy" value="false"/>
+        </qualifier>
+    </bean>
+
     <bean id="messageSendService" class="com.nhnacademy.edu.springframework.service.MessageSendService">
         <!--        autowire="byType">-->
         <!--        <constructor-arg ref="smsMessageSender" />-->
