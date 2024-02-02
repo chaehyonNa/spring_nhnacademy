@@ -10,9 +10,6 @@ public class DoorayMessageSender implements MessageSender{
     @Value("${hookUrl}")
     private String hookUrl;
 
-    public void setDoorayHookSender(DoorayHookSender doorayHookSender) {
-        System.out.println("setDoorayHookSender");
-    }
     @Override
     public boolean sendMessage(User user) {
         new DoorayHookSender(new RestTemplate(), hookUrl)
