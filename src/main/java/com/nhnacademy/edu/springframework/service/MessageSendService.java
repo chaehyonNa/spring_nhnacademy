@@ -3,7 +3,10 @@ package com.nhnacademy.edu.springframework.service;
 import com.nhnacademy.edu.springframework.domain.User;
 import com.nhnacademy.edu.springframework.sender.MessageSender;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.stereotype.Component;
 
+@Component
 public class MessageSendService {
     private MessageSender messageSender;
 
