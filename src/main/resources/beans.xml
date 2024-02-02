@@ -19,13 +19,13 @@
     <context:property-placeholder location="classpath:MessageSende.properties" />
 
 
-    <bean id="doorayHookSender" class="com.nhn.dooray.client.DoorayHookSender"
-          scope="singleton">
-        <constructor-arg>
-            <bean class="org.springframework.web.client.RestTemplate" />
-        </constructor-arg>
-        <constructor-arg value="${hookUrl}" />
-    </bean>
+<!--    <bean id="doorayHookSender" class="com.nhn.dooray.client.DoorayHookSender"-->
+<!--          scope="singleton">-->
+<!--        <constructor-arg>-->
+<!--            <bean class="org.springframework.web.client.RestTemplate" />-->
+<!--        </constructor-arg>-->
+<!--        <constructor-arg value="${hookUrl}" />-->
+<!--    </bean>-->
 
 <!--    <bean id="doorayMessageSender" class="com.nhnacademy.edu.springframework.sender.DoorayMessageSender">-->
 <!--        <property name="doorayHookSender" ref="doorayHookSender" />-->
