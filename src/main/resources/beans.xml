@@ -16,7 +16,7 @@
     <context:annotation-config />
 
     <!--    @Value(${...})를 쓰기위한 선언-->
-    <context:property-placeholder location="classpath:MessageSende.properties" />
+    <context:property-placeholder location="classpath:MessageSend.properties" />
 
 
     <bean id="doorayHookSender" class="com.nhn.dooray.client.DoorayHookSender"
