@@ -27,13 +27,13 @@
         <constructor-arg value="${hookUrl}" />
     </bean>
 
-    <bean id="doorayMessageSender" class="com.nhnacademy.edu.springframework.sender.DoorayMessageSender">
-        <property name="doorayHookSender" ref="doorayHookSender" />
-    </bean>
+<!--    <bean id="doorayMessageSender" class="com.nhnacademy.edu.springframework.sender.DoorayMessageSender">-->
+<!--        <property name="doorayHookSender" ref="doorayHookSender" />-->
+<!--    </bean>-->
 
-    <bean id="messageSendService" class="com.nhnacademy.edu.springframework.service.MessageSendService">
-        <constructor-arg ref="doorayMessageSender" />
-    </bean>
+<!--    <bean id="messageSendService" class="com.nhnacademy.edu.springframework.service.MessageSendService">-->
+<!--        <constructor-arg ref="doorayMessageSender" />-->
+<!--    </bean>-->
 
     <bean id="logAspect" class="com.nhnacademy.edu.springframework.aspect.LogAspect" />
 </beans>

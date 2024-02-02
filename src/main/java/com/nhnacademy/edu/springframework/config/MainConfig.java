@@ -16,7 +16,7 @@ public class MainConfig {
     }
 
     @Bean
-    public MessageSendService messageSendService() {
-        return new MessageSendService();
+    public MessageSendService messageSendService(MessageSender messageSender) {
+        return new MessageSendService(messageSender);
     }
 }
