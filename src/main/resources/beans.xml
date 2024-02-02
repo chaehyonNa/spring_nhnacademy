@@ -3,27 +3,37 @@
        xmlns="http://www.springframework.org/schema/beans"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="
-        http://www.springframework.org/schema/beans
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context
-        http://www.springframework.org/schema/context/spring-context.xsd">
+        http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd"
+       xmlns:aop="http://www.springframework.org/schema/aop">
 
-<!--    annotation설정을 위한 선언-->
+    <!--    AOP사용하기 위한 선언-->
+    <aop:aspectj-autoproxy/>
+
+    <!--    annotation설정을 위한 선언-->
     <context:annotation-config />
-
-
-    <context:component-scan base-package="com.nhnacademy.edu.springframework" />
 
     <!--    @Value(${...})를 쓰기위한 선언-->
     <context:property-placeholder location="classpath:MessageSende.properties" />
 
+
+    <bean id="doorayHookSender" class="com.nhn.dooray.client.DoorayHookSender"
+          scope="singleton">
+        <constructor-arg>
+            <bean class="org.springframework.web.client.RestTemplate" />
+        </constructor-arg>
+        <constructor-arg value="${hookUrl}" />
+    </bean>
+
     <bean id="doorayMessageSender" class="com.nhnacademy.edu.springframework.sender.DoorayMessageSender">
-        <qualifier type="com.nhnacademy.edu.springframework.annotation.MessageSenderQualifier">
-            <attribute key="how" value="DOORAY"/>
-        </qualifier>
+        <property name="doorayHookSender" ref="doorayHookSender" />
     </bean>
 
     <bean id="messageSendService" class="com.nhnacademy.edu.springframework.service.MessageSendService">
+        <constructor-arg ref="doorayMessageSender" />
     </bean>
+
+    <bean id="logAspect" class="com.nhnacademy.edu.springframework.aspect.LogAspect" />
 </beans>
